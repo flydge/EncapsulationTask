@@ -25,17 +25,21 @@ namespace EncapsulationTask
             Bear bear2 = new Bear(wordList, foodList,"slowly",36,"black");
             Bear bear3 = new Bear(wordList, foodList,"medium",45,"brown");
             Bear bear4 = new Bear(wordList, foodList,"swim",10,"brown");
-            Bear bear6 = new Bear(wordList, foodList,"swim",10,"brown");
             Bear bear5 = new Bear(wordList, foodList,"medium",45,"white");
+            Bear bear6 = new Bear(wordList, foodList,"swim",10,"brown");
             
             Group<Bear> bearsGroup = new Group<Bear>();
             bearsGroup.GroupList.Add(bear1);
-            bearsGroup.GroupList.Add(bear2);
-            bearsGroup.GroupList.Add(bear3);
-            bearsGroup.GroupList.Add(bear4);
+//            bearsGroup.GroupList.Add(bear2);
+//            bearsGroup.GroupList.Add(bear3);
+//            bearsGroup.GroupList.Add(bear4);
             bearsGroup.GroupList.Add(bear5);
-            bearsGroup.GroupList.Add(bear6);
+//            bearsGroup.GroupList.Add(bear6);
             // Console.WriteLine(bearsGroup);
+            
+            
+            
+            
             
             //fishes
             Fish fish1 = new Fish(wordList,foodList,"swim",30, new List<string>()
@@ -53,15 +57,18 @@ namespace EncapsulationTask
                 .OrderBy(bear=>bear.MovementSpeed);
             foreach (var whiteBear in whiteBears)
             {
-                Console.WriteLine(whiteBear);
+                Console.WriteLine("White bears:" + whiteBear);
             }
 
             var notWhiteFastestBear = bearsGroup.GroupList
                 .Where(bear => bear.Color != "white")
                 .OrderBy(bear => -bear.MovementSpeed)
-                .Select(bear => bear).First();
+                .Select(bear => bear).FirstOrDefault();
 
-            Console.WriteLine("Not white fastest bear:\n"+notWhiteFastestBear);
+         
+             Console.WriteLine("Not white fastest bear:\n"+notWhiteFastestBear);   
+            
+            
 
 
             var top2SlowestBears = bearsGroup.GroupList
